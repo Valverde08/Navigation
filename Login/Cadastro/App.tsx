@@ -3,6 +3,7 @@ import './gesture-handler';
 import { StyleSheet, Text, View,Alert } from 'react-native';
 import Routes from './routes/indexRoutes';
 import { NavigationContainer } from '@react-navigation/native'
+import * as WebBrowser from 'expo-web-browser';
 
 
 
