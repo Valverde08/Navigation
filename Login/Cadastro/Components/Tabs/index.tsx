@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Alert, Text,View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import {FontAwesome,MaterialIcons,Octicons} from '@expo/vector-icons';
 import { estilo } from "./style";
+import { AuthContextList } from "../../Context/authConextList";
 
 
-export default function TabCustom({state,navigation}) {
+export default function TabCustom({state,navigation}:any) {
+
+    const {openModal} = useContext<any>(AuthContextList)
     const navegar = (pagina:string)=>{
 
         navigation.navigate(pagina)
@@ -36,6 +39,7 @@ export default function TabCustom({state,navigation}) {
                     elevation: 15,
                     }}>
                 <TouchableOpacity
+                onPress={openModal}
                     
                     activeOpacity={0.5}>
                 <FontAwesome

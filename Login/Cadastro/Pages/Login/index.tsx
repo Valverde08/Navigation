@@ -25,7 +25,7 @@ export default function App() {
         if(!email || !pass)
           return Alert.alert('Erro','Campos vazios')
 
-        navigation.navigate("BottomRoutes")  
+        navigation.reset({routes:[{name:'BottomRoutes'}]})  
 
         
       } catch (error) { 
