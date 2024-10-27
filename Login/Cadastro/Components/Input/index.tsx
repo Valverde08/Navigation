@@ -12,8 +12,8 @@ type IconType =
 
 type Props = TextInputProps & {
     titleText?:string,
-    inputText:(text:string)=>void,
-    valor:string,
+    inputText?:(text:string)=>void,
+    valor?:string,
     IconLeft?:IconType,
     IconRight?:IconType,
     iconNameLeft?:any,
