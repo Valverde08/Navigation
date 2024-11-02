@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { Services } from "../Services/services";
+import { Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 
 export interface AuthData{
@@ -7,29 +9,38 @@ export interface AuthData{
         token:string;
         email:string;
         name:string; 
+        
 
     
 
 }
 interface AuthContextData{
-    auth ?: AuthData
+    auth ?: AuthData;
 
-    signin:(email:string, pass:string)=> Promise<AuthData>,
-    signout:()=> void
+    signin:(email:string, pass:string)=> Promise<AuthData>;
+    signout:()=> void;
+    
 
 }
 export const AuthContext = createContext<AuthContextData>({} as AuthContextData )
     
 export const AuthProvider:React.FC<{children?: React.ReactNode}> = ({children})=>{
     const [auth, setAuth] = useState<AuthData>()
+    
 
     async function signin(email:string, pass:string):Promise<AuthData>{
         //Chamar Api
-        const service =  await Services.signin(email, pass)
+        try {
+            const service =  await Services.signin(email, pass)
 
-        setAuth(service)
+            setAuth(service)
 
-        return service
+            return service
+
+        } catch (error) {
+            Alert.alert("Erro","Credenciais Inválidas")
+        }
+        
     }
 
     async function signout(): Promise<void>{
@@ -37,7 +48,7 @@ export const AuthProvider:React.FC<{children?: React.ReactNode}> = ({children})=
         setAuth(undefined)   
     }
 
-   
+    
     return(
         <AuthContext.Provider value={{auth, signin, signout}}>
             {children}
@@ -47,5 +58,6 @@ export const AuthProvider:React.FC<{children?: React.ReactNode}> = ({children})=
 
 export function useAuth(){
     const  context = useContext(AuthContext)
+    return context
 
 }

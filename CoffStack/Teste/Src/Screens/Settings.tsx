@@ -1,5 +1,5 @@
 import React from "react";
-import { View,Text } from "react-native";
+import { View,Text, Alert } from "react-native";
 import Btn from "../Componets/Btn";
 import { useNavigation } from "@react-navigation/native";
 
@@ -10,8 +10,7 @@ export default function Settings(){
             <Text style={{textAlign:'center'}}>Página de Configurações</Text>
             <Btn
             title="Home"
-            navigation={navigation}
-            page='Home'
+            onPress={()=>Alert.alert("oi","oi")}
             />
             <Text>By VINICIUS VALVERDE</Text>
         </View>

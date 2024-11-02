@@ -1,20 +1,21 @@
 import React from "react";
-import { Text,StyleSheet, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import { Text,StyleSheet, Alert } from "react-native";
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native-gesture-handler';
 
 
 interface MyButton extends TouchableOpacityProps{
     title:string;
-    navigation?:any;
-    changePage?:()=>void
-    page?:string
+    entrar?:()=> void;
+    
+    
 
 
 } 
 
-export default function Btn({title,navigation,page,...rest}:MyButton){
+export default function Btn({title,entrar,...rest}:MyButton){
     return(
         <TouchableOpacity 
-        onPress={()=>navigation.navigate(page)}
+        onPress={entrar}
         activeOpacity={0.5}
         style={styles.btn}>
         

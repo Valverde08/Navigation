@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View,Text,StyleSheet } from "react-native";
+import { View,Text,StyleSheet, Alert } from "react-native";
 import Btn from "../Componets/Btn";
 import Inpt from "../Componets/Inpt";
 import { useNavigation } from "@react-navigation/native";
@@ -26,8 +26,8 @@ export default function SignIn(){
             />
             <Btn
             title="Entrar"
-            onPress={()=>signin(email,pass)}
-            page='Home'
+            entrar={()=>signin(email,pass)}
+            
             
             />
             <Text>{email}</Text>
